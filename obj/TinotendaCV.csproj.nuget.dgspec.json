@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lab_services_student\\Desktop\\TinotendaCV_MVC\\TinotendaCV.csproj": {}
+    "C:\\Users\\lab_services_student\\Desktop\\CV-Website\\TinotendaCV.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lab_services_student\\Desktop\\TinotendaCV_MVC\\TinotendaCV.csproj": {
+    "C:\\Users\\lab_services_student\\Desktop\\CV-Website\\TinotendaCV.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lab_services_student\\Desktop\\TinotendaCV_MVC\\TinotendaCV.csproj",
+        "projectUniqueName": "C:\\Users\\lab_services_student\\Desktop\\CV-Website\\TinotendaCV.csproj",
         "projectName": "TinotendaCV",
-        "projectPath": "C:\\Users\\lab_services_student\\Desktop\\TinotendaCV_MVC\\TinotendaCV.csproj",
+        "projectPath": "C:\\Users\\lab_services_student\\Desktop\\CV-Website\\TinotendaCV.csproj",
         "packagesPath": "C:\\Users\\lab_services_student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lab_services_student\\Desktop\\TinotendaCV_MVC\\obj\\",
+        "outputPath": "C:\\Users\\lab_services_student\\Desktop\\CV-Website\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,12 +49,6 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
-              "target": "Package",
-              "version": "[10.0.0-preview.1.25120.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -74,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

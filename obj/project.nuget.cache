@@ -1,17 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uQ9zounzoO0=",
+  "dgSpecHash": "IC8V428R10s=",
   "success": true,
-  "projectFilePath": "C:\\Users\\lab_services_student\\Desktop\\TinotendaCV_MVC\\TinotendaCV.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\6.0.0\\microsoft.aspnetcore.mvc.razor.extensions.6.0.0.nupkg.sha512",
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\10.0.0-preview.1.25120.3\\microsoft.aspnetcore.mvc.razor.runtimecompilation.10.0.0-preview.1.25120.3.nupkg.sha512",
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.0\\microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.2\\microsoft.codeanalysis.analyzers.3.3.2.nupkg.sha512",
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.codeanalysis.common\\4.0.0\\microsoft.codeanalysis.common.4.0.0.nupkg.sha512",
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.0.0\\microsoft.codeanalysis.csharp.4.0.0.nupkg.sha512",
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.codeanalysis.razor\\6.0.0\\microsoft.codeanalysis.razor.6.0.0.nupkg.sha512",
-    "C:\\Users\\lab_services_student\\.nuget\\packages\\microsoft.extensions.dependencymodel\\10.0.0-preview.1.25080.5\\microsoft.extensions.dependencymodel.10.0.0-preview.1.25080.5.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\lab_services_student\\Desktop\\CV-Website\\TinotendaCV.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

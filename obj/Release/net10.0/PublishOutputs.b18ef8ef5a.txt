@@ -1,0 +1,7 @@
+C:\Users\lab_services_student\Desktop\CV-Website\publish\TinotendaCV.exe
+C:\Users\lab_services_student\Desktop\CV-Website\publish\appsettings.Development.json
+C:\Users\lab_services_student\Desktop\CV-Website\publish\appsettings.json
+C:\Users\lab_services_student\Desktop\CV-Website\publish\TinotendaCV.dll
+C:\Users\lab_services_student\Desktop\CV-Website\publish\TinotendaCV.deps.json
+C:\Users\lab_services_student\Desktop\CV-Website\publish\TinotendaCV.runtimeconfig.json
+C:\Users\lab_services_student\Desktop\CV-Website\publish\TinotendaCV.pdb
