@@ -1,0 +1,292 @@
+@model PortfolioViewModel
+
+@{
+    ViewData["Title"] = "Portfolio";
+}
+
+<!-- Hero Section -->
+<section id="home" class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                <div class="hero-content">
+                    <p class="hero-greeting">Hello, I'm</p>
+                    <h1 class="hero-name">@Model.PersonalInfo.Name</h1>
+                    <h2 class="hero-title">@Model.PersonalInfo.Title</h2>
+                    <p class="hero-location"><i class="bi bi-geo-alt-fill"></i> @Model.PersonalInfo.Location</p>
+                    <p class="hero-bio">@Model.PersonalInfo.Bio</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary btn-lg me-3"><i class="bi bi-briefcase me-2"></i>View Projects</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg"><i class="bi bi-envelope me-2"></i>Get In Touch</a>
+                    </div>
+                    <div class="hero-social">
+                        <a href="https://github.com/@Model.PersonalInfo.GitHub" target="_blank" class="social-link"><i class="bi bi-github"></i></a>
+                        <a href="mailto:@Model.PersonalInfo.Email" class="social-link"><i class="bi bi-envelope"></i></a>
+                        <a href="tel:@Model.PersonalInfo.Phone.Replace(" ", "")" class="social-link"><i class="bi bi-telephone"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="hero-image">
+                    <div class="hero-image-wrapper">
+                        <div class="hero-avatar"><span class="avatar-text">TN</span></div>
+                        <div class="floating-card card-1"><i class="bi bi-code-slash"></i><span>Developer</span></div>
+                        <div class="floating-card card-2"><i class="bi bi-shield-check"></i><span>Security</span></div>
+                        <div class="floating-card card-3"><i class="bi bi-cloud"></i><span>Cloud</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-shape"></div>
+    <div class="scroll-indicator">
+        <a href="#about" class="scroll-link"><span class="scroll-text">Scroll</span><i class="bi bi-chevron-down"></i></a>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know me better</p>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-5" data-aos="fade-right">
+                <div class="about-image">
+                    <div class="about-avatar-large"><span class="avatar-text-large">TN</span></div>
+                    <div class="experience-badge"><span class="exp-number">5+</span><span class="exp-text">Years<br>Learning</span></div>
+                </div>
+            </div>
+            <div class="col-lg-7" data-aos="fade-left">
+                <div class="about-content">
+                    <h3>Who am I?</h3>
+                    <p>I'm @Model.PersonalInfo.Name, a dedicated software developer with a strong foundation in computer science and information systems. My journey in technology began with a National Foundation Certificate in Computer Systems Installation, Servicing and Repairs, and has evolved into pursuing a Bachelor's degree in Computer and Information Sciences.</p>
+                    <p>I have a passion for creating efficient, secure, and scalable applications. My experience spans across programming, cloud development, network engineering, and cybersecurity. I'm constantly learning and adapting to new technologies to stay at the forefront of software development.</p>
+                    <div class="about-info mt-4">
+                        <div class="row">
+                            <div class="col-sm-6"><div class="info-item"><span class="info-label">Name:</span><span class="info-value">@Model.PersonalInfo.Name</span></div></div>
+                            <div class="col-sm-6"><div class="info-item"><span class="info-label">Email:</span><span class="info-value">@Model.PersonalInfo.Email</span></div></div>
+                            <div class="col-sm-6"><div class="info-item"><span class="info-label">Phone:</span><span class="info-value">@Model.PersonalInfo.Phone</span></div></div>
+                            <div class="col-sm-6"><div class="info-item"><span class="info-label">Student ID:</span><span class="info-value">@Model.PersonalInfo.StudentId</span></div></div>
+                            <div class="col-sm-6"><div class="info-item"><span class="info-label">Location:</span><span class="info-value">@Model.PersonalInfo.Location</span></div></div>
+                            <div class="col-sm-6"><div class="info-item"><span class="info-label">Status:</span><span class="info-value text-success">Available</span></div></div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <a href="#contact" class="btn btn-primary me-3">Hire Me</a>
+                        <a href="#projects" class="btn btn-outline-light">View My Work</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="skills-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">My Skills</h2>
+                <p class="section-subtitle">Technologies I work with</p>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-lg-12 text-center" data-aos="fade-up">
+                <div class="skill-filters">
+                    <button class="btn btn-filter active" data-filter="all">All</button>
+                    <button class="btn btn-filter" data-filter="Programming">Programming</button>
+                    <button class="btn btn-filter" data-filter="Cloud">Cloud</button>
+                    <button class="btn btn-filter" data-filter="Security">Security</button>
+                    <button class="btn btn-filter" data-filter="Systems">Systems</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var skill in Model.Skills)
+            {
+                <div class="col-lg-4 col-md-6 mb-4 skill-item" data-category="@skill.Category" data-aos="fade-up" data-aos-delay="@(Model.Skills.IndexOf(skill) * 50)">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <h5 class="skill-name">@skill.Name</h5>
+                            <span class="skill-percentage">@skill.Level</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 0%;" data-width="@skill.Percentage%" aria-valuenow="@skill.Percentage" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <span class="skill-category">@skill.Category</span>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-12 text-center" data-aos="fade-up">
+                <h4 class="tech-stack-title">Tech Stack</h4>
+                <div class="tech-icons">
+                    <div class="tech-icon" title="C#"><i class="bi bi-hash"></i></div>
+                    <div class="tech-icon" title=".NET"><i class="bi bi-box"></i></div>
+                    <div class="tech-icon" title="Azure"><i class="bi bi-cloud"></i></div>
+                    <div class="tech-icon" title="HTML5"><i class="bi bi-filetype-html"></i></div>
+                    <div class="tech-icon" title="CSS3"><i class="bi bi-filetype-css"></i></div>
+                    <div class="tech-icon" title="JavaScript"><i class="bi bi-filetype-js"></i></div>
+                    <div class="tech-icon" title="Git"><i class="bi bi-git"></i></div>
+                    <div class="tech-icon" title="Security"><i class="bi bi-shield-lock"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education Section -->
+<section id="education" class="experience-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Education</h2>
+                <p class="section-subtitle">My academic journey</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="timeline">
+                    @foreach (var edu in Model.Educations)
+                    {
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="@(Model.Educations.IndexOf(edu) * 100)">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h4 class="timeline-position">@edu.Degree</h4>
+                                    <span class="timeline-institution">@edu.Institution</span>
+                                    <span class="timeline-duration"><i class="bi bi-calendar3 me-1"></i>@edu.Duration</span>
+                                </div>
+                                <p class="timeline-description">@edu.Description</p>
+                                <ul class="timeline-modules">
+                                    @foreach (var module in edu.Modules)
+                                    {
+                                        <li><i class="bi bi-check2-circle"></i>@module</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Some of my recent work</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var project in Model.Projects)
+            {
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="@(Model.Projects.IndexOf(project) * 100)">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder"><i class="bi bi-@project.Icon"></i></div>
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="@project.GitHubUrl" target="_blank" class="project-link" title="View Code"><i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-name">@project.Name</h4>
+                            <p class="project-description">@project.Description</p>
+                            <div class="project-tech">
+                                @foreach (var tech in project.Technologies)
+                                {
+                                    <span class="tech-badge">@tech</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-12 text-center" data-aos="fade-up">
+                <a href="https://github.com/@Model.PersonalInfo.GitHub" target="_blank" class="btn btn-outline-light btn-lg"><i class="bi bi-github me-2"></i>View More on GitHub</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's work together</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5" data-aos="fade-right">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Feel free to reach out to me for any questions, opportunities, or collaborations. I'm always open to discussing new projects and ideas.</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="bi bi-envelope"></i></div>
+                            <div class="contact-details"><span class="contact-label">Email</span><a href="mailto:@Model.PersonalInfo.Email">@Model.PersonalInfo.Email</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="bi bi-telephone"></i></div>
+                            <div class="contact-details"><span class="contact-label">Phone</span><a href="tel:@Model.PersonalInfo.Phone.Replace(" ", "")">@Model.PersonalInfo.Phone</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="bi bi-geo-alt"></i></div>
+                            <div class="contact-details"><span class="contact-label">Location</span><span>@Model.PersonalInfo.Location</span></div>
+                        </div>
+                    </div>
+                    <div class="social-connect mt-4">
+                        <h5>Connect with me</h5>
+                        <div class="social-links-large">
+                            <a href="https://github.com/@Model.PersonalInfo.GitHub" target="_blank" class="social-link-large"><i class="bi bi-github"></i></a>
+                            <a href="mailto:@Model.PersonalInfo.Email" class="social-link-large"><i class="bi bi-envelope"></i></a>
+                            <a href="tel:@Model.PersonalInfo.Phone.Replace(" ", "")" class="social-link-large"><i class="bi bi-telephone"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7" data-aos="fade-left">
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Your Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Project Inquiry" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100"><i class="bi bi-send me-2"></i>Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

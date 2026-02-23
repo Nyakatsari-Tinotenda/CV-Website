@@ -1,0 +1,4 @@
+wwwroot\css\site.css
+wwwroot\js\site.js
+C:\Users\lab_services_student\Desktop\TinotendaCV_MVC\wwwroot\css\site.css
+C:\Users\lab_services_student\Desktop\TinotendaCV_MVC\wwwroot\js\site.js
