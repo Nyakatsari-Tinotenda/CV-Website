@@ -1,5 +1,6 @@
 @{
     Layout = null;
+    var baseUrl = $"{Context.Request.Scheme}://{Context.Request.Host}";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -8,67 +9,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Tinotenda Nyakatsari | DevOps &amp; Cloud Portfolio</title>
     <meta name="description" content="Tinotenda Nyakatsari, final-year Application Development student and aspiring DevOps engineer in Johannesburg. ASP.NET Core, Docker, GitHub Actions, Azure." />
+    <link rel="canonical" href="@baseUrl/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="@baseUrl/" />
     <meta property="og:title" content="Tinotenda Nyakatsari | DevOps &amp; Cloud Portfolio" />
     <meta property="og:description" content="Projects, skills and transcript highlights for an aspiring DevOps engineer: ASP.NET Core, Docker, CI/CD, Azure." />
-    <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#14213D" />
+    <meta property="og:image" content="@baseUrl/img/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#101B33" />
     <link rel="icon" href="~/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="~/img/hero-bg.webp" as="image" type="image/webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="~/js/theme.js" asp-append-version="true"></script>
 </head>
 <body>
+<a class="skip" href="#projects">Skip to projects</a>
+
 <div class="bar">
   <div class="wrap">
     <div class="prompt"><b>tinotenda</b>@@jhb:~/portfolio$</div>
-    <nav aria-label="Sections">
-      <a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
-    </nav>
+    <div class="bar-right">
+      <nav aria-label="Sections">
+        <a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#ships">Pipeline</a><a href="#education">Education</a><a href="#contact">Contact</a>
+      </nav>
+      <button class="theme-btn" type="button" id="theme-toggle" aria-label="Switch between light and dark theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
   </div>
 </div>
 
 <header class="hero">
   <div class="wrap">
-    <div>
+    <div class="hero-copy">
       <div class="eyebrow">Aspiring DevOps Engineer · Johannesburg</div>
       <h1>Code that builds, tests and ships <span>without me babysitting it.</span></h1>
       <p class="lede">I'm Tinotenda, a final-year Application Development student at the IIE. I build ASP.NET Core APIs, package them with Docker and put them behind GitHub Actions pipelines. I'm looking for a DevOps or cloud engineering internship or graduate role.</p>
-      <div class="stats" role="list">
-        <div class="stat" role="listitem"><b>300<small style="font-size:16px;color:#9FAAC0">/360</small></b><span>degree credits</span></div>
-        <div class="stat" role="listitem"><b>75%</b><span>average mark</span></div>
-        <div class="stat" role="listitem"><b>13</b><span>distinctions</span></div>
-        <div class="stat" role="listitem"><b>5</b><span>featured projects</span></div>
-      </div>
+      <dl class="stats">
+        <div class="stat"><dt>degree credits</dt><dd>300<small>/360</small></dd></div>
+        <div class="stat"><dt>average mark</dt><dd>75%</dd></div>
+        <div class="stat"><dt>distinctions</dt><dd>13</dd></div>
+        <div class="stat"><dt>featured projects</dt><dd>6</dd></div>
+      </dl>
       <div class="cta">
         <a class="btn primary" href="#projects">See the projects</a>
-        <a class="btn ghost" href="~/files/Tinotenda_Nyakatsari_CV.pdf" download>Download CV</a>
+        <a class="btn ghost" href="~/files/Tinotenda_Nyakatsari_CV.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+          Download CV
+        </a>
         <a class="btn ghost" href="https://github.com/Nyakatsari-Tinotenda" target="_blank" rel="noopener">GitHub profile</a>
       </div>
-    </div>
-    <div class="run" aria-label="Example CI run for the GLMS project">
-      <div class="run-head"><span>glms · ci.yml · push to main</span><span class="pass">● passed</span></div>
-      <ol>
-        <li><span class="ck">✓</span><span>Checkout &amp; restore</span><span class="t">dotnet</span></li>
-        <li><span class="ck">✓</span><span>Build solution</span><span class="t">MVC + API</span></li>
-        <li><span class="ck">✓</span><span>Integration tests</span><span class="t">dotnet test</span><small>auth, validation, enum round-trips</small></li>
-        <li><span class="ck">✓</span><span>Docker build</span><span class="t">image</span></li>
-      </ol>
-      <div class="run-foot">Illustration of the GLMS pipeline stages, built solo.</div>
+      <div class="status-pill" id="hero-status"><i aria-hidden="true"></i><span>Open to internships and graduate roles for 2027</span></div>
     </div>
   </div>
 </header>
 
-<main class="wrap">
-  <section class="block" id="projects">
+<main>
+  <section class="block wrap" id="projects">
     <div class="sec-head">
       <h2>Projects</h2>
       <p>Each project shows which stages of the delivery pipeline I worked on, from writing code to running it in the cloud.</p>
     </div>
-    <div class="legend"><span>Stages:</span><span>code</span><span>design</span><span>test</span><span>ci</span><span>container</span><span>cloud</span></div>
+
+    <div class="filter" role="group" aria-label="Filter projects">
+      <span>Show:</span>
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="ci" aria-pressed="false">CI/CD</button>
+      <button type="button" data-filter="container" aria-pressed="false">Containers</button>
+      <button type="button" data-filter="cloud" aria-pressed="false">Cloud</button>
+      <button type="button" data-filter="mobile" aria-pressed="false">Mobile</button>
+    </div>
+    <p class="filter-note" id="filter-note" aria-live="polite"></p>
 
     <div class="projects">
-      <article class="proj feature">
+      <article class="proj feature" data-tags="ci container test">
         <header>
           <h3>GLMS <small>Global Logistics Management System</small></h3>
           <span class="tag">Solo · flagship</span>
@@ -96,7 +116,33 @@
         </footer>
       </article>
 
-      <article class="proj">
+      <article class="proj" data-tags="ci container cloud test">
+        <header>
+          <h3>This portfolio <small>ASP.NET Core on Render</small></h3>
+          <span class="tag">Solo · live</span>
+        </header>
+        <p class="summary">The site you're reading. An ASP.NET Core MVC app on .NET 10, packaged in a multi-stage Docker image and deployed to Render, with a GitHub Actions pipeline that builds the container and smoke-tests it before anything goes live.</p>
+        <div>
+          <h4>Pipeline</h4>
+          <ul>
+            <li>Every push builds the Docker image, starts it and checks the homepage, the health endpoint and the CV download.</li>
+            <li>Render rebuilds from the same Dockerfile and only switches traffic once <code>/healthz</code> responds.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Hardening</h4>
+          <ul>
+            <li>Non-root container, security headers and a content security policy, response compression and static-file caching.</li>
+            <li>Service defined as code in <code>render.yaml</code>, so it can be recreated from the repo.</li>
+          </ul>
+        </div>
+        <footer>
+          <a class="repo" href="https://github.com/Nyakatsari-Tinotenda/CV-Website" target="_blank" rel="noopener">github.com/Nyakatsari-Tinotenda/CV-Website ↗</a>
+          <div class="stages"><span class="stage on">code</span><span class="stage on">design</span><span class="stage on">test</span><span class="stage on">ci</span><span class="stage on">container</span><span class="stage on">cloud</span></div>
+        </footer>
+      </article>
+
+      <article class="proj" data-tags="cloud">
         <header>
           <h3>FlexiSpace <small>Boardroom Booking System</small></h3>
           <span class="tag">Team of 6 · client project</span>
@@ -122,7 +168,19 @@
         </footer>
       </article>
 
-      <article class="proj compact">
+      <article class="proj compact" data-tags="cloud">
+        <header>
+          <h3>Azure Cloud Development <small>CLDV coursework</small></h3>
+          <span class="tag">Coursework</span>
+        </header>
+        <p class="summary">Built and deployed a cloud-hosted web app and a serverless Azure Function App across Cloud Development A and B.</p>
+        <footer>
+          <div class="chips"><a class="repo" href="https://github.com/Nyakatsari-Tinotenda/CLDV-6212POE-WebApp" target="_blank" rel="noopener">CLDV-6212POE-WebApp ↗</a><a class="repo" href="https://github.com/Nyakatsari-Tinotenda/CLDV-FunctionApp" target="_blank" rel="noopener">CLDV-FunctionApp ↗</a></div>
+          <div class="stages"><span class="stage on">code</span><span class="stage">design</span><span class="stage">test</span><span class="stage">ci</span><span class="stage">container</span><span class="stage on">cloud</span></div>
+        </footer>
+      </article>
+
+      <article class="proj compact" data-tags="ci mobile test">
         <header>
           <h3>BudgetTrackPlus <small>Android budgeting app</small></h3>
           <span class="tag">Team project</span>
@@ -134,7 +192,7 @@
         </footer>
       </article>
 
-      <article class="proj compact">
+      <article class="proj compact" data-tags="mobile test">
         <header>
           <h3>CampusConnect <small>Campus Q&amp;A app</small></h3>
           <span class="tag">Solo</span>
@@ -145,32 +203,48 @@
           <div class="stages"><span class="stage on">code</span><span class="stage on">design</span><span class="stage on">test</span><span class="stage">ci</span><span class="stage">container</span><span class="stage">cloud</span></div>
         </footer>
       </article>
-
-      <article class="proj compact">
-        <header>
-          <h3>Azure Cloud Development <small>CLDV coursework</small></h3>
-          <span class="tag">Coursework</span>
-        </header>
-        <p class="summary">Built and deployed a cloud-hosted web app and a serverless Azure Function App across Cloud Development A and B. Source is on GitHub as CLDV-6212POE-WebApp and CLDV-FunctionApp.</p>
-        <footer>
-          <div class="chips"><span class="chip">C#</span><span class="chip">Azure</span><span class="chip">Azure Functions</span></div>
-          <div class="stages"><span class="stage on">code</span><span class="stage">design</span><span class="stage">test</span><span class="stage">ci</span><span class="stage">container</span><span class="stage on">cloud</span></div>
-        </footer>
-      </article>
     </div>
   </section>
 
-  <section class="block" id="skills">
-    <div class="sec-head"><h2>Skills</h2><p>Grouped by where they sit in the path from code to production.</p></div>
-    <div class="skills">
-      <div class="skill"><h3>DevOps &amp; cloud</h3><div class="chips"><span class="chip">Docker</span><span class="chip">GitHub Actions</span><span class="chip">CI/CD</span><span class="chip">Microsoft Azure</span><span class="chip">Git</span></div></div>
-      <div class="skill"><h3>Backend</h3><div class="chips"><span class="chip">C#</span><span class="chip">ASP.NET Core</span><span class="chip">.NET 8</span><span class="chip">REST APIs</span><span class="chip">JWT</span><span class="chip">SQL</span></div></div>
-      <div class="skill"><h3>Mobile</h3><div class="chips"><span class="chip">Kotlin</span><span class="chip">Jetpack Compose</span><span class="chip">Room</span></div></div>
-      <div class="skill"><h3>Foundations</h3><div class="chips"><span class="chip">Java</span><span class="chip">Python</span><span class="chip">UML</span><span class="chip">Networking</span><span class="chip">Security</span></div></div>
+  <section class="band skills-band" id="skills">
+    <div class="wrap">
+      <div class="sec-head"><h2>Skills</h2><p>Grouped by where they sit in the path from code to production.</p></div>
+      <div class="skills">
+        <div class="skill"><h3>DevOps &amp; cloud</h3><p>Build, package, ship</p><div class="chips"><span class="chip">Docker</span><span class="chip">GitHub Actions</span><span class="chip">CI/CD</span><span class="chip">Microsoft Azure</span><span class="chip">Render</span><span class="chip">Git</span></div></div>
+        <div class="skill"><h3>Backend</h3><p>APIs and data</p><div class="chips"><span class="chip">C#</span><span class="chip">ASP.NET Core</span><span class="chip">.NET 8 / 10</span><span class="chip">REST APIs</span><span class="chip">JWT</span><span class="chip">SQL</span></div></div>
+        <div class="skill"><h3>Mobile</h3><p>Android apps</p><div class="chips"><span class="chip">Kotlin</span><span class="chip">Jetpack Compose</span><span class="chip">Room</span></div></div>
+        <div class="skill"><h3>Foundations</h3><p>From coursework</p><div class="chips"><span class="chip">Java</span><span class="chip">Python</span><span class="chip">UML</span><span class="chip">Networking</span><span class="chip">Security</span></div></div>
+      </div>
+      <div class="learning"><b>Learning next</b><span class="chip">AZ-900</span><span class="chip">Linux &amp; Bash</span><span class="chip">Terraform / Bicep</span><span class="chip">Kubernetes</span></div>
     </div>
   </section>
 
-  <section class="block" id="education">
+  <section class="block wrap" id="ships">
+    <div class="sec-head"><h2>How this site ships</h2><p>This page is deployed by the same kind of pipeline I build. The panel on the right reads live from the running server.</p></div>
+    <div class="ships">
+      <ol class="pipe">
+        <li><div><h3>Push to GitHub</h3><p>A commit to <code>main</code> starts both the CI workflow and a Render deploy.</p></div></li>
+        <li><div><h3>Build and smoke-test in CI</h3><p>GitHub Actions builds the Docker image, starts the container and checks <code>/</code>, <code>/healthz</code> and the CV download.</p></div></li>
+        <li><div><h3>Multi-stage Docker build</h3><p>The .NET SDK image compiles the app. Only the slim ASP.NET runtime ships, running as a non-root user.</p></div></li>
+        <li><div><h3>Deploy on Render</h3><p>Render builds from the same Dockerfile and waits for <code>/healthz</code> before sending traffic to the new version.</p></div></li>
+        <li><div><h3>Serve, hardened</h3><p>Security headers, a content security policy, compression and cached static files on every response.</p></div></li>
+      </ol>
+      <div class="live" aria-live="polite">
+        <div class="live-head"><span>GET /api/info</span><span class="state" id="live-state">● checking…</span></div>
+        <dl>
+          <div><dt>Health</dt><dd id="live-health">…</dd></div>
+          <div><dt>Deployed commit</dt><dd id="live-commit">…</dd></div>
+          <div><dt>Branch</dt><dd id="live-branch">…</dd></div>
+          <div><dt>Runtime</dt><dd id="live-runtime">…</dd></div>
+          <div><dt>Container up for</dt><dd id="live-uptime">…</dd></div>
+          <div><dt>Response time</dt><dd id="live-latency">…</dd></div>
+        </dl>
+        <div class="live-foot">On Render's free plan the container sleeps when idle, so the first visit can take up to a minute.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="education">
     <div class="sec-head"><h2>Education</h2><p>Bachelor of Computer and Information Sciences in Application Development, NQF level 7.</p></div>
     <div class="edu">
       <div class="qual">
@@ -180,29 +254,35 @@
         <div class="q"><div class="when">2019 · certification</div><h3>National Foundation Certificate</h3><p>Computer Systems Installation, Servicing and Repairs. Zimbabwe Ministry of Higher and Tertiary Education.</p></div>
       </div>
       <div class="marks" aria-label="Final marks per module">
-        <div class="marks-head"><strong style="color:var(--ink)">Module marks</strong><span>IIE academic transcript</span></div>
+        <div class="marks-head"><strong>Module marks</strong><span>IIE academic transcript</span></div>
         <div id="bars"></div>
         <div class="key"><span>Distinction</span><span class="p">Pass</span><span class="l">75% distinction line</span></div>
       </div>
     </div>
   </section>
+
+  <section class="band contact" id="contact">
+    <div class="wrap">
+      <div>
+        <h2>Hiring for DevOps or cloud?</h2>
+        <p>I'm open to internships and graduate programmes in Johannesburg or remote. Email is the fastest way to reach me, and my one-page CV is a click away.</p>
+      </div>
+      <div class="links">
+        <div><span class="k">Email</span><span class="right"><span class="val" id="email">tinonyakatsari@@gmail.com</span><button class="copy" type="button" id="copy-email">Copy</button></span></div>
+        <div><span class="k">CV</span><a href="~/files/Tinotenda_Nyakatsari_CV.pdf" download>Download PDF</a></div>
+        <div><span class="k">GitHub</span><a href="https://github.com/Nyakatsari-Tinotenda" target="_blank" rel="noopener">Nyakatsari-Tinotenda</a></div>
+        <div><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/tinotenda-nyakatsari-173609430" target="_blank" rel="noopener">tinotenda-nyakatsari</a></div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<section class="contact" id="contact">
+<footer class="site">
   <div class="wrap">
-    <div>
-      <h2>Hiring for DevOps or cloud?</h2>
-      <p>I'm open to internships and graduate programmes in Johannesburg or remote. Email is the fastest way to reach me. My one-page CV is below.</p>
-    </div>
-    <div class="links">
-      <div><span class="k">Email</span><span class="val" id="email">tinonyakatsari@@gmail.com</span><button class="copy" type="button" id="copy-email">Copy</button></div>
-      <div><span class="k">GitHub</span><a href="https://github.com/Nyakatsari-Tinotenda" target="_blank" rel="noopener">Nyakatsari-Tinotenda</a></div>
-      <div><span class="k">CV</span><a href="~/files/Tinotenda_Nyakatsari_CV.pdf" download>Tinotenda_Nyakatsari_CV.pdf</a></div>
-      <div><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/tinotenda-nyakatsari-173609430" target="_blank" rel="noopener">tinotenda-nyakatsari</a></div>
-    </div>
+    <span>© 2026 Tinotenda Nyakatsari · Johannesburg</span>
+    <span id="footer-build">Built with ASP.NET Core · Docker · Render</span>
   </div>
-</section>
-<footer class="site"><div class="wrap">© 2026 Tinotenda Nyakatsari · Johannesburg</div></footer>
+</footer>
 
 <script src="~/js/site.js" asp-append-version="true"></script>
 </body>

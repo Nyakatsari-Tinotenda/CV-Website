@@ -26,6 +26,8 @@ jobs:
           curl -fsS http://localhost:10000/healthz
           curl -fsS http://localhost:10000/ | grep -q "Tinotenda"
           curl -fsS -o /dev/null http://localhost:10000/files/Tinotenda_Nyakatsari_CV.pdf
+          curl -fsS http://localhost:10000/api/info | grep -q '"dotnet"'
+          curl -fsSI http://localhost:10000/ | grep -qi "content-security-policy"
 
       - name: Container logs on failure
         if: failure()
