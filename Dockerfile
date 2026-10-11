@@ -1,23 +1,25 @@
-# ---------- BUILD STAGE ----------
+# ---------- Build stage ----------
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
-# Copy everything and restore
+# Restore first so the dependency layer is cached between builds
+COPY TinotendaCV.csproj ./
+RUN dotnet restore TinotendaCV.csproj
+
 COPY . .
-RUN dotnet restore
+RUN dotnet publish TinotendaCV.csproj -c Release -o /app/publish /p:UseAppHost=false --no-restore
 
-# Publish the app in Release mode
-RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
-
-# ---------- RUNTIME STAGE ----------
-FROM mcr.microsoft.com/dotnet/aspnet:10.0
+# ---------- Runtime stage ----------
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
-
-# Copy published files from build stage
 COPY --from=build /app/publish .
 
-# Expose port 10000
-ENV ASPNETCORE_URLS=http://+:10000
+ENV ASPNETCORE_ENVIRONMENT=Production \
+    DOTNET_RUNNING_IN_CONTAINER=true \
+    PORT=10000
+EXPOSE 10000
 
-# Fix typo in DLL name here
+# Run as the non-root user that ships with the .NET images
+USER $APP_UID
+
 ENTRYPOINT ["dotnet", "TinotendaCV.dll"]

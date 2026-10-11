@@ -1,25 +1,27 @@
 @model ErrorViewModel
 @{
-    ViewData["Title"] = "Error";
+    Layout = null;
 }
-
-<section class="py-5" style="padding-top: 100px !important; min-height: 60vh; display: flex; align-items: center;">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <i class="bi bi-exclamation-triangle" style="font-size: 5rem; color: var(--primary-color);"></i>
-                <h1 class="mt-4 mb-3" style="color: var(--text-primary);">Oops! Something went wrong</h1>
-                <p class="text-secondary mb-4">An error occurred while processing your request.</p>
-                
-                @if (Model.ShowRequestId)
-                {
-                    <p class="text-muted">
-                        <strong>Request ID:</strong> <code>@Model.RequestId</code>
-                    </p>
-                }
-                
-                <a href="/" class="btn btn-primary mt-3"><i class="bi bi-house me-2"></i>Back to Home</a>
-            </div>
-        </div>
-    </div>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Something went wrong | Tinotenda Nyakatsari</title>
+    <style>
+        body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #14213D; color: #E7ECF5; font-family: system-ui, sans-serif; padding: 24px; }
+        a { color: #E2C266; }
+        code { font-family: ui-monospace, Consolas, monospace; color: #9FAAC0; }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>That page didn't load.</h1>
+        <p>Something failed on the server. <a href="/">Go back to the portfolio</a>.</p>
+        @if (Model?.ShowRequestId == true)
+        {
+            <p><code>Request ID: @Model.RequestId</code></p>
+        }
+    </main>
+</body>
+</html>

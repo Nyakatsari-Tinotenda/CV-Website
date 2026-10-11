@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the Docker image
+        run: docker build -t tinotenda-portfolio .
+
+      - name: Start the container
+        run: docker run -d --name portfolio -p 10000:10000 tinotenda-portfolio
+
+      - name: Smoke test
+        run: |
+          for i in $(seq 1 20); do
+            curl -fsS http://localhost:10000/healthz && break
+            sleep 2
+          done
+          curl -fsS http://localhost:10000/healthz
+          curl -fsS http://localhost:10000/ | grep -q "Tinotenda"
+          curl -fsS -o /dev/null http://localhost:10000/files/Tinotenda_Nyakatsari_CV.pdf
+
+      - name: Container logs on failure
+        if: failure()
+        run: docker logs portfolio

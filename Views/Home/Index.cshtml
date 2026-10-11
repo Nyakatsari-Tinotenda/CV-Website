@@ -1,292 +1,209 @@
-@model PortfolioViewModel
-
 @{
-    ViewData["Title"] = "Portfolio";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Tinotenda Nyakatsari | DevOps &amp; Cloud Portfolio</title>
+    <meta name="description" content="Tinotenda Nyakatsari, final-year Application Development student and aspiring DevOps engineer in Johannesburg. ASP.NET Core, Docker, GitHub Actions, Azure." />
+    <meta property="og:title" content="Tinotenda Nyakatsari | DevOps &amp; Cloud Portfolio" />
+    <meta property="og:description" content="Projects, skills and transcript highlights for an aspiring DevOps engineer: ASP.NET Core, Docker, CI/CD, Azure." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#14213D" />
+    <link rel="icon" href="~/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+<div class="bar">
+  <div class="wrap">
+    <div class="prompt"><b>tinotenda</b>@@jhb:~/portfolio$</div>
+    <nav aria-label="Sections">
+      <a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
 
-<!-- Hero Section -->
-<section id="home" class="hero-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
-                <div class="hero-content">
-                    <p class="hero-greeting">Hello, I'm</p>
-                    <h1 class="hero-name">@Model.PersonalInfo.Name</h1>
-                    <h2 class="hero-title">@Model.PersonalInfo.Title</h2>
-                    <p class="hero-location"><i class="bi bi-geo-alt-fill"></i> @Model.PersonalInfo.Location</p>
-                    <p class="hero-bio">@Model.PersonalInfo.Bio</p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary btn-lg me-3"><i class="bi bi-briefcase me-2"></i>View Projects</a>
-                        <a href="#contact" class="btn btn-outline-light btn-lg"><i class="bi bi-envelope me-2"></i>Get In Touch</a>
-                    </div>
-                    <div class="hero-social">
-                        <a href="https://github.com/@Model.PersonalInfo.GitHub" target="_blank" class="social-link"><i class="bi bi-github"></i></a>
-                        <a href="mailto:@Model.PersonalInfo.Email" class="social-link"><i class="bi bi-envelope"></i></a>
-                        <a href="tel:@Model.PersonalInfo.Phone.Replace(" ", "")" class="social-link"><i class="bi bi-telephone"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                <div class="hero-image">
-                    <div class="hero-image-wrapper">
-                        <div class="hero-avatar"><span class="avatar-text">TN</span></div>
-                        <div class="floating-card card-1"><i class="bi bi-code-slash"></i><span>Developer</span></div>
-                        <div class="floating-card card-2"><i class="bi bi-shield-check"></i><span>Security</span></div>
-                        <div class="floating-card card-3"><i class="bi bi-cloud"></i><span>Cloud</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Aspiring DevOps Engineer · Johannesburg</div>
+      <h1>Code that builds, tests and ships <span>without me babysitting it.</span></h1>
+      <p class="lede">I'm Tinotenda, a final-year Application Development student at the IIE. I build ASP.NET Core APIs, package them with Docker and put them behind GitHub Actions pipelines. I'm looking for a DevOps or cloud engineering internship or graduate role.</p>
+      <div class="stats" role="list">
+        <div class="stat" role="listitem"><b>300<small style="font-size:16px;color:#9FAAC0">/360</small></b><span>degree credits</span></div>
+        <div class="stat" role="listitem"><b>75%</b><span>average mark</span></div>
+        <div class="stat" role="listitem"><b>13</b><span>distinctions</span></div>
+        <div class="stat" role="listitem"><b>5</b><span>featured projects</span></div>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See the projects</a>
+        <a class="btn ghost" href="~/files/Tinotenda_Nyakatsari_CV.pdf" download>Download CV</a>
+        <a class="btn ghost" href="https://github.com/Nyakatsari-Tinotenda" target="_blank" rel="noopener">GitHub profile</a>
+      </div>
     </div>
-    <div class="hero-shape"></div>
-    <div class="scroll-indicator">
-        <a href="#about" class="scroll-link"><span class="scroll-text">Scroll</span><i class="bi bi-chevron-down"></i></a>
+    <div class="run" aria-label="Example CI run for the GLMS project">
+      <div class="run-head"><span>glms · ci.yml · push to main</span><span class="pass">● passed</span></div>
+      <ol>
+        <li><span class="ck">✓</span><span>Checkout &amp; restore</span><span class="t">dotnet</span></li>
+        <li><span class="ck">✓</span><span>Build solution</span><span class="t">MVC + API</span></li>
+        <li><span class="ck">✓</span><span>Integration tests</span><span class="t">dotnet test</span><small>auth, validation, enum round-trips</small></li>
+        <li><span class="ck">✓</span><span>Docker build</span><span class="t">image</span></li>
+      </ol>
+      <div class="run-foot">Illustration of the GLMS pipeline stages, built solo.</div>
     </div>
-</section>
+  </div>
+</header>
 
-<!-- About Section -->
-<section id="about" class="about-section py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Get to know me better</p>
-            </div>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-lg-5" data-aos="fade-right">
-                <div class="about-image">
-                    <div class="about-avatar-large"><span class="avatar-text-large">TN</span></div>
-                    <div class="experience-badge"><span class="exp-number">5+</span><span class="exp-text">Years<br>Learning</span></div>
-                </div>
-            </div>
-            <div class="col-lg-7" data-aos="fade-left">
-                <div class="about-content">
-                    <h3>Who am I?</h3>
-                    <p>I'm @Model.PersonalInfo.Name, a dedicated software developer with a strong foundation in computer science and information systems. My journey in technology began with a National Foundation Certificate in Computer Systems Installation, Servicing and Repairs, and has evolved into pursuing a Bachelor's degree in Computer and Information Sciences.</p>
-                    <p>I have a passion for creating efficient, secure, and scalable applications. My experience spans across programming, cloud development, network engineering, and cybersecurity. I'm constantly learning and adapting to new technologies to stay at the forefront of software development.</p>
-                    <div class="about-info mt-4">
-                        <div class="row">
-                            <div class="col-sm-6"><div class="info-item"><span class="info-label">Name:</span><span class="info-value">@Model.PersonalInfo.Name</span></div></div>
-                            <div class="col-sm-6"><div class="info-item"><span class="info-label">Email:</span><span class="info-value">@Model.PersonalInfo.Email</span></div></div>
-                            <div class="col-sm-6"><div class="info-item"><span class="info-label">Phone:</span><span class="info-value">@Model.PersonalInfo.Phone</span></div></div>
-                            <div class="col-sm-6"><div class="info-item"><span class="info-label">Student ID:</span><span class="info-value">@Model.PersonalInfo.StudentId</span></div></div>
-                            <div class="col-sm-6"><div class="info-item"><span class="info-label">Location:</span><span class="info-value">@Model.PersonalInfo.Location</span></div></div>
-                            <div class="col-sm-6"><div class="info-item"><span class="info-label">Status:</span><span class="info-value text-success">Available</span></div></div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <a href="#contact" class="btn btn-primary me-3">Hire Me</a>
-                        <a href="#projects" class="btn btn-outline-light">View My Work</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<main class="wrap">
+  <section class="block" id="projects">
+    <div class="sec-head">
+      <h2>Projects</h2>
+      <p>Each project shows which stages of the delivery pipeline I worked on, from writing code to running it in the cloud.</p>
     </div>
-</section>
+    <div class="legend"><span>Stages:</span><span>code</span><span>design</span><span>test</span><span>ci</span><span>container</span><span>cloud</span></div>
 
-<!-- Skills Section -->
-<section id="skills" class="skills-section py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
-                <h2 class="section-title">My Skills</h2>
-                <p class="section-subtitle">Technologies I work with</p>
-            </div>
+    <div class="projects">
+      <article class="proj feature">
+        <header>
+          <h3>GLMS <small>Global Logistics Management System</small></h3>
+          <span class="tag">Solo · flagship</span>
+        </header>
+        <p class="summary">A logistics management system built end to end in three parts: an ASP.NET Core MVC web app, a separate REST API secured with JWT bearer tokens, and a containerised build with automated tests running in CI.</p>
+        <div>
+          <h4>What I built</h4>
+          <ul>
+            <li>The MVC front end and the REST API, with JWT authentication between them.</li>
+            <li>A Dockerfile that packages the solution into a reproducible image.</li>
+            <li>A GitHub Actions workflow that builds the solution and runs integration tests on every push.</li>
+          </ul>
         </div>
-        <div class="row mb-4">
-            <div class="col-lg-12 text-center" data-aos="fade-up">
-                <div class="skill-filters">
-                    <button class="btn btn-filter active" data-filter="all">All</button>
-                    <button class="btn btn-filter" data-filter="Programming">Programming</button>
-                    <button class="btn btn-filter" data-filter="Cloud">Cloud</button>
-                    <button class="btn btn-filter" data-filter="Security">Security</button>
-                    <button class="btn btn-filter" data-filter="Systems">Systems</button>
-                </div>
-            </div>
+        <div>
+          <h4>What broke, and the fix</h4>
+          <div class="log">
+            <div><span class="code">401</span><span class="fix">Requests to the API came back unauthorised. Traced it to how HttpClient was scoped and fixed the client setup so the token reached the API.</span></div>
+            <div><span class="code">enum</span><span class="fix">Enum values failed to deserialise between the web app and the API. Fixed the serialisation so both sides agree.</span></div>
+            <div><span class="code">400</span><span class="fix">Validation rules on the client and the API disagreed. Brought them back in line.</span></div>
+          </div>
         </div>
-        <div class="row">
-            @foreach (var skill in Model.Skills)
-            {
-                <div class="col-lg-4 col-md-6 mb-4 skill-item" data-category="@skill.Category" data-aos="fade-up" data-aos-delay="@(Model.Skills.IndexOf(skill) * 50)">
-                    <div class="skill-card">
-                        <div class="skill-header">
-                            <h5 class="skill-name">@skill.Name</h5>
-                            <span class="skill-percentage">@skill.Level</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 0%;" data-width="@skill.Percentage%" aria-valuenow="@skill.Percentage" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <span class="skill-category">@skill.Category</span>
-                    </div>
-                </div>
-            }
-        </div>
-        <div class="row mt-5">
-            <div class="col-lg-12 text-center" data-aos="fade-up">
-                <h4 class="tech-stack-title">Tech Stack</h4>
-                <div class="tech-icons">
-                    <div class="tech-icon" title="C#"><i class="bi bi-hash"></i></div>
-                    <div class="tech-icon" title=".NET"><i class="bi bi-box"></i></div>
-                    <div class="tech-icon" title="Azure"><i class="bi bi-cloud"></i></div>
-                    <div class="tech-icon" title="HTML5"><i class="bi bi-filetype-html"></i></div>
-                    <div class="tech-icon" title="CSS3"><i class="bi bi-filetype-css"></i></div>
-                    <div class="tech-icon" title="JavaScript"><i class="bi bi-filetype-js"></i></div>
-                    <div class="tech-icon" title="Git"><i class="bi bi-git"></i></div>
-                    <div class="tech-icon" title="Security"><i class="bi bi-shield-lock"></i></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        <footer>
+          <div class="chips"><span class="chip">ASP.NET Core</span><span class="chip">C#</span><span class="chip">REST</span><span class="chip">JWT</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span></div>
+          <div class="stages"><span class="stage on">code</span><span class="stage on">design</span><span class="stage on">test</span><span class="stage on">ci</span><span class="stage on">container</span><span class="stage">cloud</span></div>
+        </footer>
+      </article>
 
-<!-- Education Section -->
-<section id="education" class="experience-section py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
-                <h2 class="section-title">Education</h2>
-                <p class="section-subtitle">My academic journey</p>
-            </div>
+      <article class="proj">
+        <header>
+          <h3>FlexiSpace <small>Boardroom Booking System</small></h3>
+          <span class="tag">Team of 6 · client project</span>
+        </header>
+        <p class="summary">A boardroom booking platform for a real client, delivered as a Work Integrated Learning project. A .NET 8 Web API sits behind web and mobile front ends, with Microsoft Entra ID sign-in and Outlook calendar sync through the Microsoft Graph API.</p>
+        <div>
+          <h4>My part</h4>
+          <ul>
+            <li>Owned the booking logic and conflict rules that prevent double-bookings and enforce booking constraints.</li>
+            <li>Contributed UML class, sequence, state and deployment diagrams for the system design.</li>
+          </ul>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="timeline">
-                    @foreach (var edu in Model.Educations)
-                    {
-                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="@(Model.Educations.IndexOf(edu) * 100)">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <div class="timeline-header">
-                                    <h4 class="timeline-position">@edu.Degree</h4>
-                                    <span class="timeline-institution">@edu.Institution</span>
-                                    <span class="timeline-duration"><i class="bi bi-calendar3 me-1"></i>@edu.Duration</span>
-                                </div>
-                                <p class="timeline-description">@edu.Description</p>
-                                <ul class="timeline-modules">
-                                    @foreach (var module in edu.Modules)
-                                    {
-                                        <li><i class="bi bi-check2-circle"></i>@module</li>
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </div>
+        <div>
+          <h4>How the team shipped</h4>
+          <ul>
+            <li>Client-approved, Azure-only architecture: App Service for the API, Azure SQL for data, Entra ID for identity.</li>
+            <li>Feature branches and pull requests, with peer review before every merge to main.</li>
+          </ul>
         </div>
-    </div>
-</section>
+        <footer>
+          <div class="chips"><span class="chip">.NET 8</span><span class="chip">Web API</span><span class="chip">Entra ID</span><span class="chip">Graph API</span><span class="chip">Azure SQL</span></div>
+          <div class="stages"><span class="stage on">code</span><span class="stage on">design</span><span class="stage">test</span><span class="stage">ci</span><span class="stage">container</span><span class="stage on">cloud</span></div>
+        </footer>
+      </article>
 
-<!-- Projects Section -->
-<section id="projects" class="projects-section py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Some of my recent work</p>
-            </div>
-        </div>
-        <div class="row">
-            @foreach (var project in Model.Projects)
-            {
-                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="@(Model.Projects.IndexOf(project) * 100)">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <div class="project-placeholder"><i class="bi bi-@project.Icon"></i></div>
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="@project.GitHubUrl" target="_blank" class="project-link" title="View Code"><i class="bi bi-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h4 class="project-name">@project.Name</h4>
-                            <p class="project-description">@project.Description</p>
-                            <div class="project-tech">
-                                @foreach (var tech in project.Technologies)
-                                {
-                                    <span class="tech-badge">@tech</span>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-        <div class="row mt-3">
-            <div class="col-lg-12 text-center" data-aos="fade-up">
-                <a href="https://github.com/@Model.PersonalInfo.GitHub" target="_blank" class="btn btn-outline-light btn-lg"><i class="bi bi-github me-2"></i>View More on GitHub</a>
-            </div>
-        </div>
-    </div>
-</section>
+      <article class="proj compact">
+        <header>
+          <h3>BudgetTrackPlus <small>Android budgeting app</small></h3>
+          <span class="tag">Team project</span>
+        </header>
+        <p class="summary">Set up GitHub Actions so the unit test suite runs automatically on every push, and tracked down Room database and ViewModel wiring bugs that were breaking data flow in the app.</p>
+        <footer>
+          <div class="chips"><span class="chip">Kotlin</span><span class="chip">Room</span><span class="chip">MVVM</span><span class="chip">GitHub Actions</span></div>
+          <div class="stages"><span class="stage on">code</span><span class="stage">design</span><span class="stage on">test</span><span class="stage on">ci</span><span class="stage">container</span><span class="stage">cloud</span></div>
+        </footer>
+      </article>
 
-<!-- Contact Section -->
-<section id="contact" class="contact-section py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's work together</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-5" data-aos="fade-right">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p>Feel free to reach out to me for any questions, opportunities, or collaborations. I'm always open to discussing new projects and ideas.</p>
-                    <div class="contact-items">
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="bi bi-envelope"></i></div>
-                            <div class="contact-details"><span class="contact-label">Email</span><a href="mailto:@Model.PersonalInfo.Email">@Model.PersonalInfo.Email</a></div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="bi bi-telephone"></i></div>
-                            <div class="contact-details"><span class="contact-label">Phone</span><a href="tel:@Model.PersonalInfo.Phone.Replace(" ", "")">@Model.PersonalInfo.Phone</a></div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="bi bi-geo-alt"></i></div>
-                            <div class="contact-details"><span class="contact-label">Location</span><span>@Model.PersonalInfo.Location</span></div>
-                        </div>
-                    </div>
-                    <div class="social-connect mt-4">
-                        <h5>Connect with me</h5>
-                        <div class="social-links-large">
-                            <a href="https://github.com/@Model.PersonalInfo.GitHub" target="_blank" class="social-link-large"><i class="bi bi-github"></i></a>
-                            <a href="mailto:@Model.PersonalInfo.Email" class="social-link-large"><i class="bi bi-envelope"></i></a>
-                            <a href="tel:@Model.PersonalInfo.Phone.Replace(" ", "")" class="social-link-large"><i class="bi bi-telephone"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-7" data-aos="fade-left">
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="name" class="form-label">Your Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="John Doe" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="email" class="form-label">Your Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="subject" class="form-label">Subject</label>
-                            <input type="text" class="form-control" id="subject" placeholder="Project Inquiry" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-lg w-100"><i class="bi bi-send me-2"></i>Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+      <article class="proj compact">
+        <header>
+          <h3>CampusConnect <small>Campus Q&amp;A app</small></h3>
+          <span class="tag">Solo</span>
+        </header>
+        <p class="summary">A question-and-answer app for students, built in Kotlin with Jetpack Compose. I ran usability tests and used Nielsen's heuristics to revise the interface between prototypes.</p>
+        <footer>
+          <div class="chips"><span class="chip">Kotlin</span><span class="chip">Jetpack Compose</span><span class="chip">Usability testing</span></div>
+          <div class="stages"><span class="stage on">code</span><span class="stage on">design</span><span class="stage on">test</span><span class="stage">ci</span><span class="stage">container</span><span class="stage">cloud</span></div>
+        </footer>
+      </article>
+
+      <article class="proj compact">
+        <header>
+          <h3>Azure Cloud Development <small>CLDV coursework</small></h3>
+          <span class="tag">Coursework</span>
+        </header>
+        <p class="summary">Built and deployed a cloud-hosted web app and a serverless Azure Function App across Cloud Development A and B. Source is on GitHub as CLDV-6212POE-WebApp and CLDV-FunctionApp.</p>
+        <footer>
+          <div class="chips"><span class="chip">C#</span><span class="chip">Azure</span><span class="chip">Azure Functions</span></div>
+          <div class="stages"><span class="stage on">code</span><span class="stage">design</span><span class="stage">test</span><span class="stage">ci</span><span class="stage">container</span><span class="stage on">cloud</span></div>
+        </footer>
+      </article>
     </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="sec-head"><h2>Skills</h2><p>Grouped by where they sit in the path from code to production.</p></div>
+    <div class="skills">
+      <div class="skill"><h3>DevOps &amp; cloud</h3><div class="chips"><span class="chip">Docker</span><span class="chip">GitHub Actions</span><span class="chip">CI/CD</span><span class="chip">Microsoft Azure</span><span class="chip">Git</span></div></div>
+      <div class="skill"><h3>Backend</h3><div class="chips"><span class="chip">C#</span><span class="chip">ASP.NET Core</span><span class="chip">.NET 8</span><span class="chip">REST APIs</span><span class="chip">JWT</span><span class="chip">SQL</span></div></div>
+      <div class="skill"><h3>Mobile</h3><div class="chips"><span class="chip">Kotlin</span><span class="chip">Jetpack Compose</span><span class="chip">Room</span></div></div>
+      <div class="skill"><h3>Foundations</h3><div class="chips"><span class="chip">Java</span><span class="chip">Python</span><span class="chip">UML</span><span class="chip">Networking</span><span class="chip">Security</span></div></div>
+    </div>
+  </section>
+
+  <section class="block" id="education">
+    <div class="sec-head"><h2>Education</h2><p>Bachelor of Computer and Information Sciences in Application Development, NQF level 7.</p></div>
+    <div class="edu">
+      <div class="qual">
+        <div class="q"><div class="when">2024 – 2026 · final year</div><h3>BCIS in Application Development</h3><p>The Independent Institute of Education (IIE MSA). 300 of 360 credits earned, 75% average, distinctions in 13 of 20 modules.</p></div>
+        <div class="q"><div class="when">2022</div><h3>Cambridge International A-Levels</h3><p>Bernard Mizeki College. Computer Science and Business.</p></div>
+        <div class="q"><div class="when">2020</div><h3>Cambridge IGCSE</h3><p>Bernard Mizeki College. Eight subjects, including Computer Science.</p></div>
+        <div class="q"><div class="when">2019 · certification</div><h3>National Foundation Certificate</h3><p>Computer Systems Installation, Servicing and Repairs. Zimbabwe Ministry of Higher and Tertiary Education.</p></div>
+      </div>
+      <div class="marks" aria-label="Final marks per module">
+        <div class="marks-head"><strong style="color:var(--ink)">Module marks</strong><span>IIE academic transcript</span></div>
+        <div id="bars"></div>
+        <div class="key"><span>Distinction</span><span class="p">Pass</span><span class="l">75% distinction line</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Hiring for DevOps or cloud?</h2>
+      <p>I'm open to internships and graduate programmes in Johannesburg or remote. Email is the fastest way to reach me. My one-page CV is below.</p>
+    </div>
+    <div class="links">
+      <div><span class="k">Email</span><span class="val" id="email">tinonyakatsari@@gmail.com</span><button class="copy" type="button" id="copy-email">Copy</button></div>
+      <div><span class="k">GitHub</span><a href="https://github.com/Nyakatsari-Tinotenda" target="_blank" rel="noopener">Nyakatsari-Tinotenda</a></div>
+      <div><span class="k">CV</span><a href="~/files/Tinotenda_Nyakatsari_CV.pdf" download>Tinotenda_Nyakatsari_CV.pdf</a></div>
+      <div><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/tinotenda-nyakatsari-173609430" target="_blank" rel="noopener">tinotenda-nyakatsari</a></div>
+    </div>
+  </div>
 </section>
+<footer class="site"><div class="wrap">© 2026 Tinotenda Nyakatsari · Johannesburg</div></footer>
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

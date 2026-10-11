@@ -1,142 +1,47 @@
-# Tinotenda Nyakatsari - CV Website
+# Tinotenda Nyakatsari · Portfolio
 
-A professional portfolio website built with **ASP.NET Core MVC** on **.NET 10.0**.
+My personal portfolio site: an **ASP.NET Core MVC** app on **.NET 10**, packaged with **Docker**, checked by **GitHub Actions** on every push and deployed to **Render**.
 
-## Features
+**Live site:** _add your Render URL here_
 
-- **Modern Dark Theme** with baby blue accents
-- **Fully Responsive** design for all devices
-- **Smooth Animations** with AOS library
-- **Skill Filtering** by category
-- **Animated Skill Bars**
-- **Interactive Timeline** for education
-- **Project Showcase** with GitHub links
-- **Contact Form** with validation
+## How it ships
 
-## Technologies
+```
+git push ──► GitHub Actions: docker build ─► run container ─► smoke test /healthz, /, CV download
+        └──► Render: pulls the repo, builds the same Dockerfile, health-checks /healthz, goes live
+```
 
-- ASP.NET Core MVC 10.0
-- C# 13
-- Razor Views
-- Bootstrap 5.3
-- JavaScript (ES6+)
-- AOS Animation Library
+- **Multi-stage Dockerfile.** The SDK image builds and publishes; only the slim ASP.NET runtime image ships, running as a non-root user.
+- **Restore layer cached separately**, so code-only changes rebuild faster.
+- **Health check** at `/healthz`, used by both CI and Render.
+- **Proxy-aware.** Render terminates HTTPS, so the app reads `X-Forwarded-*` headers and listens on the `PORT` Render provides.
+- **Infrastructure as code.** `render.yaml` describes the Render service, so it can be recreated from the repo.
 
-## Prerequisites
+## Run it locally
 
-- [.NET 10.0 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) (Preview)
-- Visual Studio 2022 17.13+ or VS Code
-
-## Running the Application
-
-### Option 1: Using .NET CLI
+With Docker:
 
 ```bash
-# Navigate to project folder
-cd TinotendaCV_MVC
+docker build -t tinotenda-portfolio .
+docker run --rm -p 10000:10000 tinotenda-portfolio
+# open http://localhost:10000
+```
 
-# Restore dependencies
-dotnet restore
+With the .NET 10 SDK:
 
-# Run the application
+```bash
 dotnet run
+# open http://localhost:8080
 ```
 
-Then open your browser to:
-- HTTP: `http://localhost:5000`
-- HTTPS: `https://localhost:7000`
-
-### Option 2: Using Visual Studio
-
-1. Open `TinotendaCV.sln` in Visual Studio 2022
-2. Press `F5` or click the "Run" button
-
-### Option 3: Using VS Code
-
-1. Open the project folder in VS Code
-2. Install the C# Dev Kit extension
-3. Press `F5` to run
-
-## Project Structure
+## Project layout
 
 ```
-TinotendaCV_MVC/
-├── Controllers/
-│   └── HomeController.cs       # Main controller
-├── Models/
-│   └── PortfolioViewModel.cs   # View models
-├── Views/
-│   ├── Home/
-│   │   ├── Index.cshtml        # Main portfolio page
-│   │   └── Privacy.cshtml      # Privacy policy
-│   └── Shared/
-│       ├── _Layout.cshtml      # Main layout
-│       └── Error.cshtml        # Error page
-├── wwwroot/
-│   ├── css/
-│   │   └── site.css            # Custom styles
-│   ├── js/
-│   │   └── site.js             # Interactive JavaScript
-│   └── images/                 # Images folder
-├── Properties/
-│   └── launchSettings.json     # Launch configuration
-├── TinotendaCV.csproj          # Project file
-├── Program.cs                  # Application entry point
-└── README.md                   # This file
+Controllers/HomeController.cs   Serves the portfolio page and the error page
+Views/Home/Index.cshtml         The portfolio page
+wwwroot/css, wwwroot/js         Styles and the transcript chart / copy-email script
+wwwroot/files/                  Downloadable CV (PDF)
+Dockerfile, .dockerignore       Container build
+render.yaml                     Render service definition
+.github/workflows/ci.yml        Build + smoke-test pipeline
 ```
-
-## Customization
-
-### Update Personal Information
-
-Edit `Controllers/HomeController.cs` to update:
-- Personal details (name, email, phone, etc.)
-- Skills
-- Education history
-- Projects
-
-### Change Colors
-
-Edit `wwwroot/css/site.css` and modify the CSS variables:
-
-```css
-:root {
-    --primary-color: #87CEEB;      /* Baby blue */
-    --primary-light: #B0E0E6;
-    --primary-dark: #5F9EA0;
-    --dark-bg: #0a0a0a;            /* Dark background */
-    --card-bg: #141414;            /* Card background */
-}
-```
-
-## Building for Production
-
-```bash
-dotnet publish -c Release -o ./publish
-```
-
-The published files will be in the `publish` folder.
-
-## Deployment
-
-### Azure App Service
-
-```bash
-az webapp up --name tinotenda-cv --runtime "DOTNET:10.0"
-```
-
-### IIS
-
-1. Publish the application
-2. Copy files to IIS directory
-3. Configure application pool for .NET 10.0
-
-## License
-
-This project is for personal use.
-
-## Contact
-
-- **Email:** tinotendanyakatsarii2@gmail.com
-- **Phone:** 074 459 6617
-- **GitHub:** [Nyakatsari-Tinotenda](https://github.com/Nyakatsari-Tinotenda)
