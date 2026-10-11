@@ -92,12 +92,10 @@
   async function loadInfo() {
     const state = $('live-state');
     try {
-      const t0 = performance.now();
       const [infoRes, healthRes] = await Promise.all([
         fetch('/api/info', { cache: 'no-store' }),
         fetch('/healthz', { cache: 'no-store' })
       ]);
-      const ms = Math.round(performance.now() - t0);
       if (!infoRes.ok) throw new Error('HTTP ' + infoRes.status);
       const info = await infoRes.json();
       const health = (await healthRes.text()).trim();
@@ -116,9 +114,6 @@
       } else {
         $('live-commit').textContent = 'local build';
       }
-      $('live-branch').textContent = info.branch || '—';
-      $('live-runtime').textContent = `.NET ${info.dotnet} · ${info.environment}`;
-      $('live-latency').textContent = `${ms} ms`;
       uptimeBase = info.uptimeSeconds; fetchedAt = Date.now();
       tick();
       const ok = healthRes.ok && /healthy/i.test(health);
@@ -127,7 +122,7 @@
     } catch (err) {
       state.textContent = '● unavailable';
       state.classList.add('warn');
-      ['live-health', 'live-commit', 'live-branch', 'live-runtime', 'live-uptime', 'live-latency']
+      ['live-health', 'live-commit', 'live-uptime']
         .forEach(id => { if ($(id).textContent === '…') $(id).textContent = '—'; });
     }
   }

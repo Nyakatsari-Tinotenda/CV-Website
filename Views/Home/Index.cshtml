@@ -32,7 +32,7 @@
 
 <div class="bar">
   <div class="wrap">
-    <div class="prompt"><b>tinotenda</b>@@jhb:~/portfolio$</div>
+    <a class="brand" href="#top">Tinotenda Nyakatsari</a>
     <div class="bar-right">
       <nav aria-label="Sections">
         <a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#ships">Pipeline</a><a href="#education">Education</a><a href="#contact">Contact</a>
@@ -45,7 +45,7 @@
   </div>
 </div>
 
-<header class="hero">
+<header class="hero" id="top">
   <div class="wrap">
     <div class="hero-copy">
       <div class="eyebrow">Aspiring DevOps Engineer · Johannesburg</div>
@@ -55,7 +55,6 @@
         <div class="stat"><dt>degree credits</dt><dd>300<small>/360</small></dd></div>
         <div class="stat"><dt>average mark</dt><dd>75%</dd></div>
         <div class="stat"><dt>distinctions</dt><dd>13</dd></div>
-        <div class="stat"><dt>featured projects</dt><dd>6</dd></div>
       </dl>
       <div class="cta">
         <a class="btn primary" href="#projects">See the projects</a>
@@ -74,11 +73,10 @@
   <section class="block wrap" id="projects">
     <div class="sec-head">
       <h2>Projects</h2>
-      <p>Each project shows which stages of the delivery pipeline I worked on, from writing code to running it in the cloud.</p>
+      <p>Green tags show the pipeline stages I worked on.</p>
     </div>
 
     <div class="filter" role="group" aria-label="Filter projects">
-      <span>Show:</span>
       <button type="button" data-filter="all" aria-pressed="true">All</button>
       <button type="button" data-filter="ci" aria-pressed="false">CI/CD</button>
       <button type="button" data-filter="container" aria-pressed="false">Containers</button>
@@ -208,7 +206,7 @@
 
   <section class="band skills-band" id="skills">
     <div class="wrap">
-      <div class="sec-head"><h2>Skills</h2><p>Grouped by where they sit in the path from code to production.</p></div>
+      <div class="sec-head"><h2>Skills</h2></div>
       <div class="skills">
         <div class="skill"><h3>DevOps &amp; cloud</h3><p>Build, package, ship</p><div class="chips"><span class="chip">Docker</span><span class="chip">GitHub Actions</span><span class="chip">CI/CD</span><span class="chip">Microsoft Azure</span><span class="chip">Render</span><span class="chip">Git</span></div></div>
         <div class="skill"><h3>Backend</h3><p>APIs and data</p><div class="chips"><span class="chip">C#</span><span class="chip">ASP.NET Core</span><span class="chip">.NET 8 / 10</span><span class="chip">REST APIs</span><span class="chip">JWT</span><span class="chip">SQL</span></div></div>
@@ -220,32 +218,27 @@
   </section>
 
   <section class="block wrap" id="ships">
-    <div class="sec-head"><h2>How this site ships</h2><p>This page is deployed by the same kind of pipeline I build. The panel on the right reads live from the running server.</p></div>
+    <div class="sec-head"><h2>How this site ships</h2><p>The panel reads live from the running server.</p></div>
     <div class="ships">
       <ol class="pipe">
-        <li><div><h3>Push to GitHub</h3><p>A commit to <code>main</code> starts both the CI workflow and a Render deploy.</p></div></li>
-        <li><div><h3>Build and smoke-test in CI</h3><p>GitHub Actions builds the Docker image, starts the container and checks <code>/</code>, <code>/healthz</code> and the CV download.</p></div></li>
-        <li><div><h3>Multi-stage Docker build</h3><p>The .NET SDK image compiles the app. Only the slim ASP.NET runtime ships, running as a non-root user.</p></div></li>
-        <li><div><h3>Deploy on Render</h3><p>Render builds from the same Dockerfile and waits for <code>/healthz</code> before sending traffic to the new version.</p></div></li>
-        <li><div><h3>Serve, hardened</h3><p>Security headers, a content security policy, compression and cached static files on every response.</p></div></li>
+        <li><div><h3>Push to GitHub</h3><p>A commit to <code>main</code> starts CI and a Render deploy.</p></div></li>
+        <li><div><h3>Build and test in CI</h3><p>GitHub Actions builds the Docker image, runs it and checks the key pages.</p></div></li>
+        <li><div><h3>Deploy on Render</h3><p>Render builds the same image and switches traffic once <code>/healthz</code> passes.</p></div></li>
+        <li><div><h3>Serve securely</h3><p>Non-root container, security headers, compression and cached files.</p></div></li>
       </ol>
       <div class="live" aria-live="polite">
-        <div class="live-head"><span>GET /api/info</span><span class="state" id="live-state">● checking…</span></div>
+        <div class="live-head"><span>Live status</span><span class="state" id="live-state">● checking…</span></div>
         <dl>
           <div><dt>Health</dt><dd id="live-health">…</dd></div>
           <div><dt>Deployed commit</dt><dd id="live-commit">…</dd></div>
-          <div><dt>Branch</dt><dd id="live-branch">…</dd></div>
-          <div><dt>Runtime</dt><dd id="live-runtime">…</dd></div>
-          <div><dt>Container up for</dt><dd id="live-uptime">…</dd></div>
-          <div><dt>Response time</dt><dd id="live-latency">…</dd></div>
+          <div><dt>Uptime</dt><dd id="live-uptime">…</dd></div>
         </dl>
-        <div class="live-foot">On Render's free plan the container sleeps when idle, so the first visit can take up to a minute.</div>
       </div>
     </div>
   </section>
 
   <section class="block wrap" id="education">
-    <div class="sec-head"><h2>Education</h2><p>Bachelor of Computer and Information Sciences in Application Development, NQF level 7.</p></div>
+    <div class="sec-head"><h2>Education</h2></div>
     <div class="edu">
       <div class="qual">
         <div class="q"><div class="when">2024 – 2026 · final year</div><h3>BCIS in Application Development</h3><p>The Independent Institute of Education (IIE MSA). 300 of 360 credits earned, 75% average, distinctions in 13 of 20 modules.</p></div>
@@ -265,7 +258,7 @@
     <div class="wrap">
       <div>
         <h2>Hiring for DevOps or cloud?</h2>
-        <p>I'm open to internships and graduate programmes in Johannesburg or remote. Email is the fastest way to reach me, and my one-page CV is a click away.</p>
+        <p>I'm open to internships and graduate programmes in Johannesburg or remote. Email is the fastest way to reach me.</p>
       </div>
       <div class="links">
         <div><span class="k">Email</span><span class="right"><span class="val" id="email">tinonyakatsari@@gmail.com</span><button class="copy" type="button" id="copy-email">Copy</button></span></div>
